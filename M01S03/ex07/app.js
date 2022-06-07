@@ -101,7 +101,7 @@ console.warn(
 // var personbirthYear = document.getElementById('prop05');
 // var elementResult = document.getElementById('result');
 
-// var prop01 = inputpersonfirstName.value || 'Dobre';
+// var prop01 = personfirstName.value || 'Dobre';
 
 // result =
 //   prop01 +
@@ -119,56 +119,58 @@ console.warn(
 
 // elementResult.innerText = result;
 
-// var inputperson = document.getElementById('prop01');
+var inputperson = document.getElementById('prop01');
+var inputpets0 = document.getElementById('prop02');
 
-// var prop01 = inputperson.value || 'Dobre';
+var prop01 = inputperson.value || 'Dobre';
+var prop02 = inputpets0.value || 'fish';
 
-// console.log(prop01);
+console.log(prop01 + prop02 + '.');
 
-console.log(
-  person.firstName +
-    ', ' +
-    person.pets[0].species +
-    ', ' +
-    person.pets[1].species +
-    ' si ' +
-    person.pets[2].species +
-    ' ' +
-    'locuiesc toti in aceiasi casa.',
-);
+// console.log(
+//   person.firstName +
+//     ', ' +
+//     person.pets[0].species +
+//     ', ' +
+//     person.pets[1].species +
+//     ' si ' +
+//     person.pets[2].species +
+//     ' ' +
+//     'locuiesc toti in aceiasi casa.',
+// );
 
-console.warn(
-  'Calculeaza si afiseaza diferenta de varsta dintre animalul de pe pozitia 0 si cel de pe pozitia 2 ',
-);
+// console.warn(
+//   'Calculeaza si afiseaza diferenta de varsta dintre animalul de pe pozitia 0 si cel de pe pozitia 2 ',
+// );
 
-console.log((person.pets[0].age - person.pets[2].age).toString());
+// console.log((person.pets[0].age - person.pets[2].age).toString());
 
-console.warn(
-  'Afiseaza propozitia: “Ma numesc xxx yyy, m-am nascut in birthYear si codul meu postal este: zipCode”',
-);
+// console.warn(
+//   'Afiseaza propozitia: “Ma numesc xxx yyy, m-am nascut in birthYear si codul meu postal este: zipCode”',
+// );
 
-console.log(
-  'Ma numesc ' +
-    person.firstName +
-    ' ' +
-    person.lastName +
-    ', m-am nascut in ' +
-    person.birthYear +
-    ' si codul meu postal este: ' +
-    person.zipCode +
-    '.',
-);
+// console.log(
+//   'Ma numesc ' +
+//     person.firstName +
+//     ' ' +
+//     person.lastName +
+//     ', m-am nascut in ' +
+//     person.birthYear +
+//     ' si codul meu postal este: ' +
+//     person.zipCode +
+//     '.',
+// );
 
-console.warn(
-  'Afiseaza propozitia: “Animalele mele s-au nascut in xxxx, xxx, respectiv xxx.” Foloseste anul curent pentru a efectua scaderea. ',
-);
+// console.warn(
+//   'Afiseaza propozitia: “Animalele mele s-au nascut in xxxx, xxx, respectiv xxx.” Foloseste anul curent pentru a efectua scaderea. ',
+// );
 
-console.log(
-  'Animalele mele s-au nascut in ' +
-    (2022 - person.pets[0].age).toString() +
-    ', ' +
-    (2022 - person.pets[1].age).toString() +
-    ' respectiv in ' +
-    (2022 - person.pets[2].age).toString() +
-    '.',
-);
+// console.log(
+//   'Animalele mele s-au nascut in ' +
+//     (2022 - person.pets[0].age).toString() +
+//     ', ' +
+//     (2022 - person.pets[1].age).toString() +
+//     ' respectiv in ' +
+//     (2022 - person.pets[2].age).toString() +
+//     '.',
+// );
