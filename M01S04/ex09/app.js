@@ -1,10 +1,14 @@
-// var i = 101;
+// Modifica exemplul astfel incat bucla sa numere de la 1 la 100
+
+// var i = 1;
 
 // do {
 //   console.log(i);
 
 //   i++;
 // } while (i <= 100);
+
+// Modifica exemplul astfel incat bucla sa numere de la 1 la 99 (dar nu schimba numarul 100).
 
 // var i = 1;
 // do {
@@ -66,9 +70,9 @@
 // var i = 8;
 
 // do {
-//   console.log(i);
 //   if (i % 2 !== 1) {
 //     i++;
+//     console.log(i);
 //     continue;
 //   }
 
@@ -78,20 +82,20 @@
 // Folosind metoda prompt de trei ori cere utilizatorului un numar, o limita inferioara si o limita superioara apoi afiseaza toti multiplii de numar intre limita inferioara si limita superioara introduse.
 
 // var number = prompt('Introdu un numar');
-// var limitinferior = prompt(
+// var inferiorlimit = prompt(
 //   'Introdu un numar de la care sa porneasca numaratoarea',
 // );
 // var limit = prompt(
 //   'Introdu un alt numar pana unde vrei sa se opreasca numaratoarea',
 // );
 
-// var i = number;
+// var i = inferiorlimit;
 
 // do {
 //   console.log(i);
-//   if (number % i !== 0) {
+//   if (i % number === 0) {
+//     console.log(`acesta e multiplu de ${number}`);
 //     i++;
-//     continue;
 //   }
 
 //   i++;
