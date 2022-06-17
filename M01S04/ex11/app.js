@@ -112,3 +112,36 @@ Object.keys(person.friends).forEach(function (friendName) {
 
   console.log(`${friend.name} ${friend.surname}`);
 });
+
+console.warn(
+  'Afiseaza propozitia: “Prietenii mei sunt Larry Larryson, Steven Stevenson si Carol Carolson.” folosind Object.keys()',
+);
+
+var message = 'Prietenii mei sunt ';
+Object.keys(person.friends).forEach(function (friendName, index, friendNames) {
+  var friend = person.friends[friendName];
+  var punctuation = ', ';
+  var friendsCount = friendNames.length;
+
+  if (friendsCount - 2 === index) {
+    punctuation = ' si ';
+  }
+
+  if (friendsCount - 1 === index) {
+    punctuation = '.';
+  }
+
+  message += `${friend.name} ${friend.surname}${punctuation}`;
+});
+console.log(message);
+
+console.warn(
+  'Folosind bucla, afiseaza mai multe propozitii (cate una per console.log()) care sa afiseze: “Larry are xx ani. Steven are …”',
+);
+
+Object.keys(person.friends).forEach(function (friendName) {
+  var friend = person.friends[friendName];
+  var age = friend.age;
+
+  console.log(`${friend.name} are ${age} ani.`);
+});
