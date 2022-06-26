@@ -16,3 +16,12 @@ button.addEventListener('click', eventListener);
 removeButton.addEventListener('click', function () {
   button.removeEventListener('click', eventListener);
 });
+
+const ageButton = document.getElementById('query');
+const message = document.querySelector('#message');
+
+ageButton.addEventListener('click', function () {
+  const age = prompt('Care este varsta ta?');
+  console.log(`Ai ${age} de ani.`);
+  message.innerText = `Ai ${age} de ani.`;
+});
