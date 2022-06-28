@@ -30,7 +30,7 @@ $('#myParagraph').text('Am schimbat dinamic');
 $('<span>', {
   id: 'example',
   text: ' ParolaMea',
-  // pascal case - Cu litera mare incepe
+  // pascal case - Cu litera mare incepe - ParolaMea
   // camel case - incepe cu litera mica - myParagraph
   // snake case - my_paragraph
 }).appendTo($p2);
