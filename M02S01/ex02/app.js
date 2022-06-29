@@ -71,3 +71,13 @@ class Tricycle extends Vehicle {
 
 const bike = new Bicycle('Pegas', 'red', 8, 20);
 // 8 speed, 20 - topspeed
+
+const trike = new Tricycle('Tryke', 'red', -2, 9);
+
+trike.decelerate();
+trike.decelerate();
+trike.decelerate();
+
+const car = new Car('Audi', 'blue', 3, 140, -50);
+
+car.accelerate();

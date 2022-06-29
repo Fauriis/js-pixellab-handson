@@ -54,6 +54,20 @@ class Car {
 
     this.speed = speed;
   }
+
+  isTrunkOpen = false;
+
+  openTrunk() {
+    this.isTrunkOpen = true;
+  }
+
+  closeTrunk() {
+    this.isTrunkOpen = false;
+  }
+
+  stop() {
+    this.speed = 0;
+  }
 }
 
 const audi = new Car('Audi', 'black', 4, 50);
@@ -61,3 +75,28 @@ const audi = new Car('Audi', 'black', 4, 50);
 const opel = new Car('Opel', 'red', 4, 3);
 
 const cars = [audi, opel];
+
+console.warn(`Ruleaza o bucla prin forEach si afiseaza propozitiile (pentru fiecare din masini)
+“Masina era marca make si se deplasa cu speed km/h.”
+`);
+
+cars.forEach(function (car) {
+  let message = `Masina era marca ${car.make} si se deplasa cu ${car.speed} km/h.`;
+  console.log(message);
+});
+
+console.warn(
+  `In fiecare iteratie, decelereaza masina cu 5 unitati, apoi afiseaza: “Viteza noua este speed km/h.”`,
+);
+
+cars.forEach(function (car) {
+  car.decelerate();
+  car.decelerate();
+  car.decelerate();
+  car.decelerate();
+  car.decelerate();
+
+  let message = `Viteza noua este ${car.speed} km/h.`;
+
+  console.log(message);
+});
