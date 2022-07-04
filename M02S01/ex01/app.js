@@ -90,13 +90,13 @@ console.warn(
 );
 
 cars.forEach(function (car) {
-  car.decelerate();
-  car.decelerate();
-  car.decelerate();
-  car.decelerate();
-  car.decelerate();
+  // car.decelerate();
+  // car.decelerate();
+  // car.decelerate();
+  // car.decelerate();
+  // car.decelerate();
 
-  let message = `Viteza noua este ${car.speed} km/h.`;
+  let message = `Viteza noua este ${car.speed - 5} km/h.`;
 
   console.log(message);
 });
