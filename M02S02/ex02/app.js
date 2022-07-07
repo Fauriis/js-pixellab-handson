@@ -21,9 +21,12 @@ $(function () {
   $('#has-pets').on('click', function () {
     const $checkbox = $(this);
     const $nextFieldset = $checkbox.siblings('.pet-fieldset');
+
     if ($checkbox.prop('checked')) {
       $nextFieldset.slideDown();
-    } else $nextFieldset.slideUp();
+    } else {
+      $nextFieldset.slideUp();
+    }
   });
 
   $('.pet-fieldset')
@@ -66,7 +69,7 @@ $(function () {
           .append(
             $('<input>', {
               value: petData,
-              type: 'text',
+              type: 'hidden',
               name: `pet-data-${petData}`,
             }),
           );
@@ -85,7 +88,7 @@ $(function () {
     const age = FormData.get('age');
 
     const $person = $('<p>', {
-      text: `${name} ${surname} ${age}`,
+      text: `${name} ${surname}: ${age}`,
     });
 
     return $person;
@@ -100,6 +103,7 @@ $(function () {
       });
     }
     $container
+      .empty()
       .append(renderPerson(formData))
       .append(renderSkills(formData))
       .append(renderPets(formData));
@@ -113,6 +117,7 @@ $(function () {
 
     const keys = Object.keys(objectData);
     const skillsArray = [];
+
     for (let i = 0; i < keys.length; i++) {
       const keyName = keys[i];
 
@@ -129,7 +134,7 @@ $(function () {
     }
 
     const $p = $('<p>', {
-      text: `skills: ${skillsArray}`,
+      text: `Skills: ${skillsArray}`,
     });
 
     return $p;
@@ -145,7 +150,7 @@ $(function () {
     for (let i = 0; i < keys.length; i++) {
       const keyName = keys[i];
 
-      if (!keyName.startsWith('pet-')) {
+      if (!keyName.startsWith('pet-data')) {
         continue;
       }
 
@@ -242,7 +247,7 @@ $(function () {
         .append(
           $('<button>', {
             type: 'button',
-            text: 'editeaza',
+            text: 'Editeaza',
             class: 'editSkillButton',
             title: 'Editeaza skill',
           }),
@@ -274,6 +279,7 @@ $(function () {
       type: 'text',
       name: 'skill-input',
     });
+
     const $addButton = $('<button>', {
       text: 'Adauga skill',
       title: 'Adauga skill',
