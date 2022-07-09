@@ -71,3 +71,13 @@ $container.before(
     text: 'jQuery is old',
   }),
 );
+
+const $p3 = $('<p>', {
+  text: 'Documentatia jQuery poate fi gasita',
+}).appendTo($body);
+
+$('<a>', {
+  text: ' aici.',
+  href: 'https://google.com',
+  target: '_blank',
+}).appendTo($p3);
