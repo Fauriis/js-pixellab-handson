@@ -14,6 +14,13 @@ const direction = {
   S: 'fw',
   W: 'back',
   E: 'fw',
+  ArrowDown: 'fw',
+  ArrowUp: 'back',
+};
+
+const arrowMap = {
+  ArrowDown: 'y',
+  ArrowUp: 'y',
 };
 
 const hero = {
@@ -39,6 +46,23 @@ controls.addEventListener('click', function (event) {
   const value = target.className;
   const currentAxis = axis[value];
   const currentDirection = direction[value];
+
+  updateHeroPosition(currentAxis, currentDirection);
+
+  renderHero(hero);
+});
+
+document.addEventListener('keydown', (event) => {
+  const arrowPressed = event.code;
+
+  // early return
+  if (!arrowPressed.startsWith('Arrow')) {
+    return;
+  }
+  // daca NU incepe (!) cu arrow ii dam return
+
+  const currentAxis = arrowMap[arrowPressed];
+  const currentDirection = direction[arrowPressed];
 
   updateHeroPosition(currentAxis, currentDirection);
 
