@@ -2,6 +2,7 @@
   "dependencies": {
     "jquery": "^3.6.0",
     "jQuery": "^1.7.4",
+    "pristinejs": "^0.1.9",
     "throttle-debounce": "^5.0.0"
   }
 }
