@@ -23,14 +23,21 @@ const renderPersons = (persons) => {
 };
 
 const getPersons = () => {
-  fetch('http://localhost:8080/persons')
-    .then((response) => {
-      return response.json();
-    })
-    .then((persons) => {
-      console.log(persons);
-      renderPersons(persons);
-    });
+  // fetch('http://localhost:8080/persons')
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //   .then((persons) => {
+  //     console.log(persons);
+  //     renderPersons(persons);
+  //   });
+
+  axios.get('http://localhost:8080/persons').then((response) => {
+    const { data: persons } = response;
+    // const persons = response.data (merge si asa)
+
+    renderPersons(persons);
+  });
 };
 
 getPersons();
@@ -45,20 +52,27 @@ personForm.addEventListener('submit', (event) => {
   const name = form.name.value;
   const surname = form.surname.value;
 
-  fetch('http://localhost:8080/persons', {
-    method: 'POST',
-    body: JSON.stringify({
-      id: Date.now(),
+  // fetch('http://localhost:8080/persons', {
+  //   method: 'POST',
+  //   body: JSON.stringify({
+  //     id: Date.now(),
+  //     name,
+  //     surname,
+  //     skills: [],
+  //   }),
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  // })
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //   .then(getPersons);
+
+  axios
+    .post('http://localhost:8080/persons', {
       name,
       surname,
-      skills: [],
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => {
-      return response.json();
     })
     .then(getPersons);
 });

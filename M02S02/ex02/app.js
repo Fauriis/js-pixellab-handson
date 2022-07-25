@@ -80,12 +80,61 @@ $(function () {
       }
     });
 
+  $('.friendForm')
+    .find('button[type="button"]')
+    .on('click', function () {
+      const $friendButton = $(this);
+      const $inputFriends = $friendButton
+        .parents('.friendForm')
+        .find('input[name^="friend-"]:not([name^="friend-data"])');
+
+      const friendValues = [];
+      $inputFriends.each(function () {
+        const $input = $(this);
+
+        friendValues.push($input.val());
+      });
+
+      $friendButton.after(renderFriendUl(friendValues));
+
+      function renderFriendUl(friendValues) {
+        const friendsClassName = 'renderFriendUl';
+
+        let $ul = $(`.${friendsClassName}`);
+        if ($ul.length <= 0) {
+          $ul = $('<ul>', {
+            class: friendsClassName,
+          });
+        }
+
+        const friendData = friendValues.join(',');
+
+        const $friendLi = $('<li>')
+          .append(
+            $('<span>', {
+              text: friendData,
+            }),
+          )
+          .append(
+            $('<input>', {
+              value: friendData,
+              type: 'hidden',
+              name: `friend-data-${friendData}`,
+            }),
+          );
+
+        $friendLi.appendTo($ul);
+
+        return $ul;
+      }
+    });
+
   //// hoisting doar pentru function
 
-  function renderPerson(FormData) {
-    const name = FormData.get('name');
-    const surname = FormData.get('surname');
-    const age = FormData.get('age');
+  function renderPerson(formData) {
+    const name = formData.get('name');
+    const surname = formData.get('surname');
+    const age = formData.get('age');
 
     const $person = $('<p>', {
       text: `${name} ${surname}: ${age}`,
@@ -106,7 +155,8 @@ $(function () {
       .empty()
       .append(renderPerson(formData))
       .append(renderSkills(formData))
-      .append(renderPets(formData));
+      .append(renderPets(formData))
+      .append(renderFriend(formData));
 
     return $container;
   }
@@ -161,11 +211,23 @@ $(function () {
       return '';
     }
 
-    const $p = $('<p>', {
+    const $ul = $('<ul>', {
       text: `Pets: ${petsArray}`,
     });
 
-    return $p;
+    return $ul;
+  }
+
+  function renderFriend(formData) {
+    const friendName = formData.get('friend-name');
+    const friendSurname = formData.get('friend-surname');
+    const friendAge = formData.get('friend-age');
+
+    const $friend = $('<ul>', {
+      text: `${friendName} ${friendSurname} ${friendAge}`,
+    });
+
+    return $friend;
   }
 
   function renderSkillControls() {
@@ -274,6 +336,18 @@ $(function () {
       return $ul;
     }
 
+    function renderFriendUl() {
+      const friendsClassName = 'renderFriendsUl';
+
+      let $ul = $(`${friendsClassName}`);
+
+      if ($ul.length <= 0) {
+        $ul = $('<ul>', {
+          class: friendsClassName,
+        });
+      }
+    }
+
     const $skillInput = $('<input>', {
       placeholder: 'Skill',
       type: 'text',
@@ -297,7 +371,26 @@ $(function () {
       $button.prev().val('');
     });
 
-    const $container = $('<div>').append($skillInput).append($addButton);
+    const $addFriendButton = $('<button>', {
+      text: 'Adauga prieten',
+      title: 'Adauga prieten',
+      type: 'button',
+    }).on('click', function () {
+      const $friendsButton = $(this);
+      const inputValue = $button.prev().val().trim();
+      if (inputValue.length < 1) {
+        return;
+      }
+
+      $friendsButton.after(renderFriendUl(inputValue));
+
+      $friendsButton.prev().val('');
+    });
+
+    const $container = $('<div>')
+      .append($skillInput)
+      .append($addButton)
+      .append($addFriendButton);
 
     return $container;
   }
