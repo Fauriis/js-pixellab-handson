@@ -218,16 +218,39 @@ $(function () {
     return $ul;
   }
 
-  function renderFriend(formData) {
-    const friendName = formData.get('friend-name');
-    const friendSurname = formData.get('friend-surname');
-    const friendAge = formData.get('friend-age');
+  function renderFriendUl() {
+    const friendsClassName = 'renderFriendsUl';
 
-    const $friend = $('<ul>', {
-      text: `${friendName} ${friendSurname} ${friendAge}`,
+    let $ul = $(`${friendsClassName}`);
+
+    if ($ul.length <= 0) {
+      $ul = $('<ul>', {
+        class: friendsClassName,
+      });
+    }
+  }
+
+  function renderFriend(formData) {
+    friends.forEach(function (friend) {
+      const { name, surname, age } = friend;
+      const fullName = `${name}, ${surname}, ${age}`;
+
+      const friendLi = document.createElement('li');
+      friendLi.innerText = fullName;
+
+      formData.append(friendLi);
     });
 
-    return $friend;
+    document.body.append(friendLi);
+    // const friendName = formData.get('friend-name');
+    // const friendSurname = formData.get('friend-surname');
+    // const friendAge = formData.get('friend-age');
+
+    // const $friend = $('<ul>', {
+    //   text: `${friendName} ${friendSurname} ${friendAge}`,
+    // });
+
+    // return $friend;
   }
 
   function renderSkillControls() {
@@ -257,8 +280,8 @@ $(function () {
 
           $editSkillButton.siblings('.skillDisplay').hide();
           $editSkillButton.siblings('.removeSkillButton').hide();
-          $editSkillButton.siblings('.cancelSkillButton').show();
-          $editSkillButton.siblings('.saveSkillButton').show();
+          $editSkillButton.siblings('.cancelSkillButton').hide();
+          $editSkillButton.siblings('.saveSkillButton').hide();
           $editSkillButton.hide();
         })
         .on('click', '.cancelSkillButton', function () {
@@ -300,7 +323,7 @@ $(function () {
         .append(
           $('<button>', {
             type: 'button',
-            text: '-',
+            text: 'Elimina',
             class: 'removeSkillButton',
             title: 'Elimina skill',
           }),
@@ -336,18 +359,6 @@ $(function () {
       return $ul;
     }
 
-    function renderFriendUl() {
-      const friendsClassName = 'renderFriendsUl';
-
-      let $ul = $(`${friendsClassName}`);
-
-      if ($ul.length <= 0) {
-        $ul = $('<ul>', {
-          class: friendsClassName,
-        });
-      }
-    }
-
     const $skillInput = $('<input>', {
       placeholder: 'Skill',
       type: 'text',
@@ -376,15 +387,15 @@ $(function () {
       title: 'Adauga prieten',
       type: 'button',
     }).on('click', function () {
-      const $friendsButton = $(this);
+      const $button = $(this);
       const inputValue = $button.prev().val().trim();
       if (inputValue.length < 1) {
         return;
       }
 
-      $friendsButton.after(renderFriendUl(inputValue));
+      $button.after(renderFriendUl(inputValue));
 
-      $friendsButton.prev().val('');
+      $button.prev().val('');
     });
 
     const $container = $('<div>')
