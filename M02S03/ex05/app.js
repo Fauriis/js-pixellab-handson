@@ -31,3 +31,31 @@ function showMessage(message, className = 'message') {
 
   paragraphElement.innerText = message;
 }
+
+let oldHeight = window.innerHeight;
+
+const debouncedResize01 = debounce(1000, function () {
+  const newHeight = this.innerHeight;
+  const newWidth = this.innerWidth;
+  showMessage(this.innerHeight.toString());
+
+  if (oldHeight !== newHeight) {
+    showMessage(
+      `Fereastra are acum suprafata de ${newHeight} si de ${newWidth} pixeli.`,
+    );
+  }
+
+  oldHeight = newHeight;
+});
+window.addEventListener('resize', debouncedResize01);
+
+document.addEventListener('DOMContentLoaded', function () {
+  const refreshButton = document.querySelector('.refresh-button');
+
+  const refreshPage = () => {
+    location.reload();
+    alert(`Suprafata este de ${oldWidth} pixeli.`);
+  };
+
+  refreshButton.addEventListener('click', refreshPage);
+});

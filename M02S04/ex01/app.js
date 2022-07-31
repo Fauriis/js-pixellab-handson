@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const box = document.querySelector('.box');
   const applyButton = document.querySelector('.applyButton');
+  const deleteButton = document.querySelector('button');
   const animationClassName = 'animate-class';
 
   setTimeout(function () {
@@ -24,6 +25,13 @@ document.addEventListener('DOMContentLoaded', function () {
       box.classList.add(animationClassName);
       this.innerText = 'Elimina';
       this.title = 'Elimina';
+    }
+  });
+
+  deleteButton.addEventListener('click', function () {
+    if (box.classList.contains(animationClassName)) {
+      deleteButton.setAttribute('name', 'eliminaButton');
+      deleteButton.setAttribute('background-color', '#000');
     }
   });
 });
